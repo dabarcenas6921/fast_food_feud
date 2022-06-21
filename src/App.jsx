@@ -39,7 +39,7 @@ export function App() {
 
   let label;
   if(menuItemSelected){
-    label = <NutritionalLabel item_name={menuItemSelected.item_name}/>
+    label = <NutritionalLabel item={menuItemSelected}/>
   }
 
   return (

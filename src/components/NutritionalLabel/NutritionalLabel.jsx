@@ -2,25 +2,25 @@ import * as React from "react"
 import { nutritionFacts } from "../../constants"
 import "./NutritionalLabel.css"
 
-export function NutritionalLabel(props) {
+export function NutritionalLabel({item}) {
   return (
     <div className="nutritional-label">
       <h3 className="title">Nutrition Facts</h3>
 
-      <h4 className="item-name">{props.item_name}</h4>
+      <h4 className="item-name">{item.item_name}</h4>
 
-      <ul className="fact-list">{nutritionFacts.map((facts, index) => {
-        <NutritionalLabelFact label={facts.label}/>
+      <ul className="fact-list">{nutritionFacts.map((facts, id) => {
+        return <NutritionalLabelFact fact={facts} key={id} item={item}/>
       })}</ul>
     </div>
   )
 }
 
-export function NutritionalLabelFact(props) {
+export function NutritionalLabelFact({fact, item}) {
   return (
-    <li className="nutrition-fact">
-      <span className="fact-label">{props.label}</span>{" "}
-      <span className="fact-value">{/* */}</span>
+    <li className="nutrition-fact" key = {fact.id}>
+      <span className="fact-label"> {fact.label}</span>
+      <span className="fact-value"> {item[fact.attribute]}</span>
     </li>
   )
 }
